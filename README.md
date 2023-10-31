@@ -34,7 +34,7 @@ A fines de facilitar el desarrollo de la aplicación, se creó una API REST util
 - ```POST localhost:3000/tasks```
 - ```GET localhost:3000/categories```
 
-Para más información acerca de json-server, visitar https://www.npmjs.com/package/json-server.
+Para más información acerca de json-server, visitar [https://www.npmjs.com/package/json-server](https://www.npmjs.com/package/json-server).
 
 ### Alcance
 Queda fuera del alcance de este ejercicio el manejo de usuarios: la aplicación podrá ser utilizada por un único usuario y no necesitará loguearse.
