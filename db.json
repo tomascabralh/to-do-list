@@ -32,12 +32,12 @@
   "tasks": [
     {
       "id": "664a90a5-22ed-588c-b113-b6373f5f4dd3",
-      "title": "Completar tests unitarios para el proyecto de la empresa",
+      "title": "Completar tests unitarios",
       "description": "Obtener un coverage del 90%",
       "category_id": "46265b1f-ffba-5cd2-9d55-36ec7e3ac095",
       "completed": false,
-      "icon": null,
-      "color": null
+      "icon": "agua",
+      "color": "#64B5F6"
     },
     {
       "id": "c77b2e4c-0992-55b4-ac93-a6dad915a754",
@@ -65,6 +65,15 @@
       "completed": true,
       "icon": null,
       "color": null
+    },
+    {
+      "title": "asdasd",
+      "description": "sdasd",
+      "category_id": "65125b62-8778-5bc8-89ac-098057b9a390",
+      "completed": false,
+      "icon": "viaje",
+      "color": "#E57373",
+      "id": "NWsRw2r"
     }
   ]
 }
