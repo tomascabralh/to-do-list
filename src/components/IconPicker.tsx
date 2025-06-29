@@ -1,50 +1,77 @@
+import { Box, ToggleButton } from "@mui/material";
+import { IconPickerProps } from "../types";
 import {
-  Box,
-  ToggleButton,
-  ToggleButtonGroup,
-  Typography,
-} from "@mui/material";
+  Apple,
+  WaterDrop,
+  Flight,
+  Pets,
+  ShoppingCart,
+  LocalPizza,
+  Favorite,
+  Bloodtype,
+  CameraAlt,
+  Pets as Cat,
+} from "@mui/icons-material";
 
 const ICONS = [
-  { key: "manzana", icon: "🍎" },
-  { key: "agua", icon: "💧" },
-  { key: "viaje", icon: "✈️" },
-  { key: "paseo", icon: "🐾" },
-  { key: "compras", icon: "🛒" },
-  { key: "pizza", icon: "🍕" },
-  { key: "corazon", icon: "❤️" },
-  { key: "gota", icon: "🩸" },
-  { key: "camara", icon: "📷" },
-  { key: "gato", icon: "🐱" },
+  { key: "manzana", icon: Apple },
+  { key: "agua", icon: WaterDrop },
+  { key: "viaje", icon: Flight },
+  { key: "paseo", icon: Pets },
+  { key: "compras", icon: ShoppingCart },
+  { key: "pizza", icon: LocalPizza },
+  { key: "corazon", icon: Favorite },
+  { key: "gota", icon: Bloodtype },
+  { key: "camara", icon: CameraAlt },
+  { key: "gato", icon: Cat },
 ];
 
-interface IconPickerProps {
-  value: string;
-  onChange: (icon: string) => void;
-}
-
-export default function IconPicker({ value, onChange }: IconPickerProps) {
+export default function IconPicker({
+  value,
+  onChange,
+  selectedColor = "#FF5E5E",
+}: IconPickerProps) {
   return (
     <Box mb={2}>
-      <Typography variant="subtitle2" mb={1} fontWeight={500}>
-        Icono
-      </Typography>
-      <ToggleButtonGroup
-        value={value}
-        exclusive
-        onChange={(_, newIcon) => newIcon && onChange(newIcon)}
-        sx={{ flexWrap: "wrap", gap: 1 }}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "repeat(4, 1fr)", sm: "repeat(5, 1fr)" },
+          rowGap: "14px",
+          columnGap: "59px",
+          justifyItems: "center",
+        }}
       >
-        {ICONS.map(({ key, icon }) => (
+        {ICONS.map(({ key, icon: IconComponent }) => (
           <ToggleButton
             key={key}
             value={key}
-            sx={{ fontSize: 22, px: 2, py: 1 }}
+            selected={value === key}
+            onClick={() => onChange(key)}
+            sx={{
+              fontSize: 22,
+              p: 0,
+              border: "none",
+              bgcolor: "transparent !important",
+              boxShadow: "none",
+              "&:hover": { bgcolor: "transparent !important" },
+              "&.Mui-selected": {
+                bgcolor: "transparent !important",
+              },
+              "&.Mui-selected:hover": {
+                bgcolor: "transparent !important",
+              },
+            }}
           >
-            {icon}
+            <IconComponent
+              sx={{
+                fontSize: 20,
+                color: value === key ? selectedColor : "#888",
+              }}
+            />
           </ToggleButton>
         ))}
-      </ToggleButtonGroup>
+      </Box>
     </Box>
   );
 }

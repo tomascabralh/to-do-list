@@ -32,19 +32,19 @@
   "tasks": [
     {
       "id": "664a90a5-22ed-588c-b113-b6373f5f4dd3",
-      "title": "Completar tests unitarios",
+      "title": "Completar tests unitarios para el proyecto de la empresa",
       "description": "Obtener un coverage del 90%",
       "category_id": "46265b1f-ffba-5cd2-9d55-36ec7e3ac095",
       "completed": false,
-      "icon": "agua",
-      "color": "#64B5F6"
+      "icon": null,
+      "color": null
     },
     {
       "id": "c77b2e4c-0992-55b4-ac93-a6dad915a754",
       "title": "Revisar políticas de seguridad de la empresa",
       "description": "Asegurarse de que los empleados estén al tanto de las políticas",
       "category_id": "65125b62-8778-5bc8-89ac-098057b9a390",
-      "completed": false,
+      "completed": true,
       "icon": null,
       "color": null
     },
@@ -62,18 +62,18 @@
       "title": "Armar objetivos para el año que viene",
       "description": "Definir metas claras y alcanzables",
       "category_id": "24c202cd-6076-58aa-a2e2-3bc3f7d99428",
-      "completed": true,
+      "completed": false,
       "icon": null,
       "color": null
     },
     {
-      "title": "asdasd",
-      "description": "sdasd",
+      "title": "Tarea de Prueba",
+      "description": "Esto es una tarea de prueba",
       "category_id": "65125b62-8778-5bc8-89ac-098057b9a390",
       "completed": false,
       "icon": "viaje",
-      "color": "#E57373",
-      "id": "NWsRw2r"
+      "color": "#81C784",
+      "id": "OaF1Z5V"
     }
   ]
 }

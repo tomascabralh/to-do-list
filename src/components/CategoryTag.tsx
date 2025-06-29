@@ -1,10 +1,6 @@
 import { Chip } from "@mui/material";
 import { useCategories } from "../hooks/useCategories";
-
-interface CategoryTagProps {
-  categoryId: string;
-  done?: boolean;
-}
+import { CategoryTagProps } from "../types";
 
 export default function CategoryTag({ categoryId, done }: CategoryTagProps) {
   const { categories } = useCategories();

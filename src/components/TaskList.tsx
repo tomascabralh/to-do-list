@@ -2,17 +2,8 @@ import { Box, Typography, Paper, CircularProgress } from "@mui/material";
 import { useTasksContext } from "../context/useTasksContext";
 import TaskItem from "./TaskItem.tsx";
 import { Task } from "../types";
-
-function splitTasks(tasks: Task[]) {
-  return {
-    pendientes: tasks.filter((t: Task) => !t.completed),
-    terminadas: tasks.filter((t: Task) => t.completed),
-  };
-}
-
-interface TaskListProps {
-  onEdit?: (task: Task) => void;
-}
+import { splitTasks } from "../utils/splitTasks";
+import { TaskListProps } from "../types";
 
 export default function TaskList({ onEdit }: TaskListProps) {
   const { tasks, loading, error, toggleTaskStatus } = useTasksContext();

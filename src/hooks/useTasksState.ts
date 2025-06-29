@@ -19,7 +19,7 @@ export function useTasksState() {
     const updated: Task = { ...task, completed: !task.completed };
     setTasks((prev) => prev.map((t) => (t.id === task.id ? updated : t)));
     try {
-      await updateTask(task.id, { completed: !task.completed });
+      await updateTask(task.id, { ...task, completed: !task.completed });
     } catch {
       setError("Error al actualizar tarea");
       setTasks((prev) => prev.map((t) => (t.id === task.id ? task : t)));

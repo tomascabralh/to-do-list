@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import TaskItem from "../components/TaskItem";
+import TaskItem from "../../components/TaskItem";
 
 const mockTask = {
   id: "1",
@@ -8,7 +8,7 @@ const mockTask = {
   category_id: "cat1",
   completed: false,
   icon: "manzana",
-  color: "#E57373",
+  color: "#FF5E5E",
 };
 
 test("renders TaskItem with title and description", () => {

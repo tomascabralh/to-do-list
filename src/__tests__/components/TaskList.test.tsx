@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import { TasksProvider } from "../context/tasksContext";
-import TaskList from "../components/TaskList";
+import { TasksProvider } from "../../context/tasksContext";
+import TaskList from "../../components/TaskList";
 
 const mockTasks = [
   {
@@ -10,7 +10,7 @@ const mockTasks = [
     category_id: "cat1",
     completed: false,
     icon: "manzana",
-    color: "#E57373",
+    color: "#FF5E5E",
   },
   {
     id: "2",
@@ -23,7 +23,7 @@ const mockTasks = [
   },
 ];
 
-jest.mock("../context/useTasksContext", () => ({
+jest.mock("../../context/useTasksContext", () => ({
   useTasksContext: () => ({
     tasks: mockTasks,
     loading: false,

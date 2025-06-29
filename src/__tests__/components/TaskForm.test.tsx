@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import TaskForm from "../components/TaskForm";
+import TaskForm from "../../components/TaskForm";
 
 const mockCategories = [
   { id: "cat1", name: "Personal" },
   { id: "cat2", name: "Trabajo" },
 ];
 
-jest.mock("../hooks/useCategories", () => ({
+jest.mock("../../hooks/useCategories", () => ({
   useCategories: () => ({
     categories: mockCategories,
     loading: false,
@@ -38,7 +38,7 @@ test("renders TaskForm in edit mode and allows editing", () => {
     category_id: "cat2",
     completed: false,
     icon: "manzana",
-    color: "#E57373",
+    color: "#FF5E5E",
   };
   render(
     <TaskForm

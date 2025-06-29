@@ -1,50 +1,65 @@
-import { Checkbox, Box, Typography, Paper, Avatar } from "@mui/material";
-import { Task } from "../types";
+import { Checkbox, Box, Typography, Paper } from "@mui/material";
+import {
+  Apple,
+  WaterDrop,
+  Flight,
+  Pets,
+  ShoppingCart,
+  LocalPizza,
+  Favorite,
+  Bloodtype,
+  CameraAlt,
+  Pets as Cat,
+} from "@mui/icons-material";
+import { TaskItemProps } from "../types";
 import CategoryTag from "./CategoryTag";
 
-const ICONS: Record<string, string> = {
-  manzana: "🍎",
-  agua: "💧",
-  viaje: "✈️",
-  paseo: "🐾",
-  compras: "🛒",
-  pizza: "🍕",
-  corazon: "❤️",
-  gota: "🩸",
-  camara: "📷",
-  gato: "🐱",
+const ICONS: Record<string, React.ComponentType> = {
+  manzana: Apple,
+  agua: WaterDrop,
+  viaje: Flight,
+  paseo: Pets,
+  compras: ShoppingCart,
+  pizza: LocalPizza,
+  corazon: Favorite,
+  gota: Bloodtype,
+  camara: CameraAlt,
+  gato: Cat,
 };
 
-interface TaskItemProps {
-  task: Task;
-  onToggle: (task: Task) => void;
-  onEdit?: (task: Task) => void;
-}
-
 export default function TaskItem({ task, onToggle, onEdit }: TaskItemProps) {
-  const icon = task.icon ? ICONS[task.icon] || task.icon : "🍎";
-  const color = task.color || "#E57373";
+  const IconComponent = task.icon ? ICONS[task.icon] || Apple : Apple;
+  const color = task.color || "#FF5E5E";
   const isDone = !!task.completed;
 
   return (
     <Paper
       sx={{
         display: "flex",
-        alignItems: "center",
-        p: 1.5,
-        mb: 1.5,
-        boxShadow: 0,
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "flex-start", sm: "center" },
+        gap: { xs: 1, sm: 0 },
+        p: 2,
+        mb: 2,
+        boxShadow: isDone
+          ? "0 2px 8px 0 rgba(0,0,0,0.04)"
+          : "0 4px 16px 0 rgba(0,0,0,0.08)",
         borderRadius: 3,
-        bgcolor: isDone ? "#f5f5f8" : "#fff",
-        opacity: isDone ? 1 : 1,
+        bgcolor: isDone ? "#f8f9fa" : "#F9FAFF",
+        border: isDone ? "1px solid #e9ecef" : "1px solid #f1f3f4",
         cursor: onEdit ? "pointer" : "default",
-        transition: "background 0.2s",
-        "&:hover": onEdit ? { bgcolor: "#f0f4f8" } : {},
+        transition: "all 0.2s ease-in-out",
+        "&:hover": onEdit
+          ? {
+              boxShadow: "0 6px 20px 0 rgba(0,0,0,0.12)",
+              transform: "translateY(-1px)",
+              bgcolor: "#fafbfc",
+            }
+          : {},
       }}
       onClick={
         onEdit
           ? (e) => {
-              // Evitar que el click en el checkbox dispare la edición
               if ((e.target as HTMLElement).closest(".MuiCheckbox-root"))
                 return;
               onEdit(task);
@@ -56,33 +71,42 @@ export default function TaskItem({ task, onToggle, onEdit }: TaskItemProps) {
         checked={isDone}
         onChange={() => onToggle(task)}
         inputProps={{ "aria-label": "Marcar tarea como terminada o pendiente" }}
-        sx={{ mr: 1.5 }}
-      />
-      <Avatar
         sx={{
-          bgcolor: isDone ? "#bdbdbd" : color,
-          color: isDone ? "#616161" : "#222",
-          width: 32,
-          height: 32,
-          fontSize: 22,
           mr: 2,
-          transition: "background 0.2s",
+          "& .MuiSvgIcon-root": {
+            fontSize: 20,
+          },
+          "&.Mui-checked": {
+            color: isDone ? "#6c757d" : color,
+          },
         }}
-      >
-        {icon}
-      </Avatar>
-      <Box sx={{ flex: 1 }}>
+      />
+      <IconComponent
+        sx={{
+          fontSize: 28,
+          color: isDone ? "#6c757d" : color,
+          mr: 2.5,
+          verticalAlign: "middle",
+        }}
+      />
+      <Box sx={{ flex: 1, minWidth: 0 }}>
         <Typography
           fontWeight={600}
           fontSize={16}
-          color={isDone ? "#616161" : "text.primary"}
+          color={isDone ? "#6c757d" : "#2c3e50"}
+          sx={{
+            mb: task.description ? 0.5 : 0,
+          }}
         >
           {task.title}
         </Typography>
         {task.description && (
           <Typography
             variant="body2"
-            color={isDone ? "#9e9e9e" : "text.secondary"}
+            color={isDone ? "#adb5bd" : "#6c757d"}
+            sx={{
+              lineHeight: 1.4,
+            }}
           >
             {task.description}
           </Typography>
