@@ -44,7 +44,7 @@
       "title": "Revisar políticas de seguridad de la empresa",
       "description": "Asegurarse de que los empleados estén al tanto de las políticas",
       "category_id": "65125b62-8778-5bc8-89ac-098057b9a390",
-      "completed": true,
+      "completed": false,
       "icon": null,
       "color": null
     },
@@ -67,13 +67,22 @@
       "color": null
     },
     {
+      "id": "OaF1Z5V",
       "title": "Tarea de Prueba",
       "description": "Esto es una tarea de prueba",
       "category_id": "65125b62-8778-5bc8-89ac-098057b9a390",
       "completed": false,
-      "icon": "viaje",
-      "color": "#81C784",
-      "id": "OaF1Z5V"
+      "icon": "pizza",
+      "color": "#2E7D32"
+    },
+    {
+      "id": "99ROqr1",
+      "title": "Tarea de Prueba 2",
+      "description": "Otra tarea de prueba",
+      "category_id": "49078200-32bd-5718-a6e5-5c4e08c0ed9c",
+      "completed": false,
+      "icon": "corazon",
+      "color": "#78F7E9"
     }
   ]
 }

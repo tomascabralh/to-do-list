@@ -1,18 +1,6 @@
 import { Box, ToggleButton } from "@mui/material";
 import { ColorPickerProps } from "../types";
-
-const COLORS = [
-  "#FF5E5E",
-  "#12AE71",
-  "#2E7D32",
-  "#C0A0F3",
-  "#FAC3D6",
-  "#FFE100",
-  "#FA82DC",
-  "#FF9C63",
-  "#82D15C",
-  "#78F7E9",
-];
+import { COLORS } from "../constants";
 
 export default function ColorPicker({ value, onChange }: ColorPickerProps) {
   return (

@@ -19,6 +19,7 @@ import { Apple } from "@mui/icons-material";
 import { handleSubmit } from "../utils/handleSubmit";
 import { handleClose } from "../utils/handleClose";
 import { TaskFormProps, Category } from "../types";
+import { UI_CONSTANTS, DEFAULTS } from "../constants";
 
 export default function TaskForm({
   open,
@@ -31,8 +32,8 @@ export default function TaskForm({
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [icon, setIcon] = useState<string | null>("manzana");
-  const [color, setColor] = useState<string | null>("#FF5E5E");
+  const [icon, setIcon] = useState<string | null>(DEFAULTS.ICON);
+  const [color, setColor] = useState<string | null>(DEFAULTS.COLOR);
   const [tab, setTab] = useState<0 | 1 | undefined>(undefined);
   const [error, setError] = useState("");
   const theme = useTheme();
@@ -42,14 +43,14 @@ export default function TaskForm({
       setTitle(taskToEdit.title || "");
       setDescription(taskToEdit.description || "");
       setCategoryId(taskToEdit.category_id || "");
-      setIcon(taskToEdit.icon || "manzana");
-      setColor(taskToEdit.color || "#FF5E5E");
+      setIcon(taskToEdit.icon || DEFAULTS.ICON);
+      setColor(taskToEdit.color || DEFAULTS.COLOR);
     } else {
       setTitle("");
       setDescription("");
       setCategoryId("");
-      setIcon("manzana");
-      setColor("#FF5E5E");
+      setIcon(DEFAULTS.ICON);
+      setColor(DEFAULTS.COLOR);
     }
     setTab(undefined);
     setError("");
@@ -92,8 +93,8 @@ export default function TaskForm({
             sx={{
               display: "flex",
               alignItems: "center",
-              px: 2.5,
-              py: 1.2,
+              px: 1.5,
+              py: 1,
               borderRadius: 99,
               cursor: "pointer",
               bgcolor: tab === 0 ? "#fafafd" : "#fafafd",
@@ -119,11 +120,11 @@ export default function TaskForm({
             sx={{
               display: "flex",
               alignItems: "center",
-              px: 2.5,
-              py: 1.2,
+              px: 1.5,
+              py: 1,
               borderRadius: 99,
               cursor: "pointer",
-              bgcolor: tab === 1 ? "#fafafd" : "#fafafd",
+              bgcolor: "#fafafd",
               border:
                 tab === 1 ? `2px solid ${color}` : "2px solid transparent",
               fontWeight: 600,
@@ -168,10 +169,10 @@ export default function TaskForm({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           fullWidth
-          inputProps={{ maxLength: 40 }}
+          inputProps={{ maxLength: UI_CONSTANTS.TITLE_MAX_LENGTH }}
           margin="normal"
           variant="standard"
-          sx={{ mb: 1.5 }}
+          sx={{ mb: 1.5, fontSize: 12, mt: 0 }}
         />
         <TextField
           label="Descripción"
@@ -179,10 +180,10 @@ export default function TaskForm({
           onChange={(e) => setDescription(e.target.value)}
           fullWidth
           multiline
-          inputProps={{ maxLength: 100 }}
+          inputProps={{ maxLength: UI_CONSTANTS.DESCRIPTION_MAX_LENGTH }}
           margin="normal"
           variant="standard"
-          sx={{ mb: 1.5 }}
+          sx={{ mb: 1.5, fontSize: 12 }}
         />
         {loading ? (
           <CircularProgress size={24} />
@@ -195,7 +196,7 @@ export default function TaskForm({
             fullWidth
             margin="normal"
             variant="standard"
-            sx={{ mb: 1.5 }}
+            sx={{ mb: 1.5, fontSize: 12 }}
           >
             {categories.map((cat: Category) => (
               <MenuItem key={cat.id} value={cat.id}>
@@ -216,15 +217,21 @@ export default function TaskForm({
       <DialogActions
         sx={{
           px: { xs: 2, sm: 4 },
-          pb: { xs: 2, sm: 3 },
-          pt: { xs: 1.5, sm: 2 },
+          pb: { xs: 2, sm: "40px" },
+          pt: { xs: 1.5, sm: "48px" },
           bgcolor: "#fff",
           justifyContent: "flex-end",
         }}
       >
         <Button
           onClick={() => handleClose(setError, onClose)}
-          sx={{ color: "#388E3C", fontWeight: 600, fontSize: 16, mr: 2 }}
+          sx={{
+            color: "#388E3C",
+            fontWeight: 500,
+            fontSize: 14,
+            mr: "16px",
+            p: 0,
+          }}
         >
           CANCELAR
         </Button>
@@ -245,10 +252,10 @@ export default function TaskForm({
           variant="contained"
           sx={{
             bgcolor: "#388E3C",
-            fontWeight: 600,
-            fontSize: 16,
+            fontWeight: 500,
+            fontSize: 14,
             borderRadius: 99,
-            px: 3,
+
             boxShadow: "none",
             "&:hover": { bgcolor: "#2e7031" },
           }}

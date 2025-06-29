@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { TasksProvider } from "../../context/tasksContext";
+import { TasksProvider } from "../../context/TasksProvider";
 import TaskList from "../../components/TaskList";
 
 const mockTasks = [
