@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { TasksContext } from "./TasksContext.tsx";
+import { TasksContext } from "./TasksContext";
 import { useTasksState } from "../hooks/useTasksState";
 
 export const TasksProvider = ({ children }: { children: ReactNode }) => {
